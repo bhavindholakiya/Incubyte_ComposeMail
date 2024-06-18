@@ -54,30 +54,30 @@ public class ComposeEmailSteps {
         loginPage.clickNextButtonAfterEnterPassword();
     }
 
-    @When("the user clicks on the \"Compose\" button")
+    @When("the user clicks on the Compose button")
     public void the_user_clicks_on_the_compose_button(){}
 
-    @When("the user enters \"recipient@example.com\" in the recipient field")
-    public void the_user_enters_email_in_the_recipient_field(){}
+    @When("the user enters {string} in the recipient field")
+    public void the_user_enters_email_in_the_recipient_field(String email){}
 
-    @When("the user enters \"Incubyte\" in the subject field")
-    public void the_user_enters_subject_in_the_subject_field(){}
+    @When("the user enters {subject}} in the subject field")
+    public void the_user_enters_subject_in_the_subject_field(String subject){}
 
-    @When("the user enters \"Automation QA test for Incubyte\" in the body field")
-    public void the_user_enters_body_in_the_body_field(){}
+    @When("the user enters {body} in the body field")
+    public void the_user_enters_body_in_the_body_field(String body){}
 
-    @When("the user clicks on the \"Send\" button")
+    @When("the user clicks on the Send button")
     public void the_user_clicks_on_the_Send_button(){}
 
     @Then("the email is sent successfully")
     public void the_email_is_sent_successfully(){}
 
-    @Then("the email appears in the \"Sent\" folder")
+    @Then("the email appears in the Sent folder")
     public void the_email_appears_in_the_Sent_folder(){}
 
-    @Then("the email subject is \"Incubyte\"")
-    public void the_email_subject_is_Incubyte(){}
+    @Then("the email subject is {subject}")
+    public void the_email_subject_is_Incubyte(String subject){}
 
-    @Then("the email body is \"Automation QA test for Incubyte\"")
-    public void the_email_body_is_Automation_QA_test_for_Incubyte(){}
+    @Then("the email body is {body}")
+    public void the_email_body_is_Automation_QA_test_for_Incubyte(String body){}
 }
