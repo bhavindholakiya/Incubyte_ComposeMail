@@ -7,9 +7,11 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.time.Duration;
 
@@ -55,29 +57,48 @@ public class ComposeEmailSteps {
     }
 
     @When("the user clicks on the Compose button")
-    public void the_user_clicks_on_the_compose_button(){}
+    public void the_user_clicks_on_the_compose_button(){
+        composeEmail.clickComposeButton();
+    }
 
     @When("the user enters {string} in the recipient field")
-    public void the_user_enters_email_in_the_recipient_field(String email){}
+    public void the_user_enters_email_in_the_recipient_field(String email){
+        composeEmail.typeEmailAddress(email);
+    }
 
-    @When("the user enters {subject}} in the subject field")
-    public void the_user_enters_subject_in_the_subject_field(String subject){}
+    @When("the user enters {subject} in the subject field")
+    public void the_user_enters_subject_in_the_subject_field(String subject){
+        composeEmail.typeSubject(subject);
+    }
 
     @When("the user enters {body} in the body field")
-    public void the_user_enters_body_in_the_body_field(String body){}
+    public void the_user_enters_body_in_the_body_field(String body){
+        composeEmail.typeEmailBody(body);
+    }
 
     @When("the user clicks on the Send button")
-    public void the_user_clicks_on_the_Send_button(){}
+    public void the_user_clicks_on_the_Send_button(){
+        composeEmail.clickSendButton();
+    }
 
     @Then("the email is sent successfully")
-    public void the_email_is_sent_successfully(){}
+    public void the_email_is_sent_successfully(){
+        Assert.assertTrue(driver.getPageSource().contains("Message sent"));
+    }
 
     @Then("the email appears in the Sent folder")
-    public void the_email_appears_in_the_Sent_folder(){}
+    public void the_email_appears_in_the_Sent_folder(){
+        driver.findElement(By.linkText("Sent")).click();
+        Assert.assertTrue(driver.getPageSource().contains("Incubyte"));
+    }
 
     @Then("the email subject is {subject}")
-    public void the_email_subject_is_Incubyte(String subject){}
+    public void the_email_subject_is_Incubyte(String subject){
+        Assert.assertTrue(driver.getPageSource().contains(subject));
+    }
 
     @Then("the email body is {body}")
-    public void the_email_body_is_Automation_QA_test_for_Incubyte(String body){}
+    public void the_email_body_is_Automation_QA_test_for_Incubyte(String body){
+        Assert.assertTrue(driver.getPageSource().contains(body));
+    }
 }
