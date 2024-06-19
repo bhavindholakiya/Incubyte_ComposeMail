@@ -6,7 +6,7 @@ Feature: Compose and send an email in Gmail
   Background:
     Given I am on the Gmail login page
 
- Scenario Outline : User can compose and send an email
+ Scenario Outline: User can compose and send an email
     Given the user is logged into Gmail account
     When the user clicks on the Compose button
     And the user enters "<email>" in the recipient field

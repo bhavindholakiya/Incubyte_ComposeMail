@@ -66,12 +66,12 @@ public class ComposeEmailSteps {
         composeEmail.typeEmailAddress(email);
     }
 
-    @When("the user enters {subject} in the subject field")
+    @When("the user enters {string} in the subject field")
     public void the_user_enters_subject_in_the_subject_field(String subject){
         composeEmail.typeSubject(subject);
     }
 
-    @When("the user enters {body} in the body field")
+    @When("the user enters {string} in the body field")
     public void the_user_enters_body_in_the_body_field(String body){
         composeEmail.typeEmailBody(body);
     }
@@ -92,12 +92,12 @@ public class ComposeEmailSteps {
         Assert.assertTrue(driver.getPageSource().contains("Incubyte"));
     }
 
-    @Then("the email subject is {subject}")
+    @Then("the email subject is {string}")
     public void the_email_subject_is_Incubyte(String subject){
         Assert.assertTrue(driver.getPageSource().contains(subject));
     }
 
-    @Then("the email body is {body}")
+    @Then("the email body is {string}")
     public void the_email_body_is_Automation_QA_test_for_Incubyte(String body){
         Assert.assertTrue(driver.getPageSource().contains(body));
     }
