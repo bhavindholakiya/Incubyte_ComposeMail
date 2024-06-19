@@ -24,15 +24,14 @@ public class ComposeEmailSteps {
     private ComposeEmailPage composeEmail;
 
     String baseURL = "https://mail.google.com/";
-    String email= "bhavin.comnet@gmail.com";
-    String password = "Prayag@2211";
+    String email= "";
+    String password = "";
 
     @Before
     public void setup(){
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        System.out.println();
         driver.get(baseURL);
     }
 
