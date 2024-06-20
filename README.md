@@ -21,13 +21,13 @@ mvn test
 ```
 ## Important Notes
 * Email and Password Setup:
-  * Before running the tests, ensure you have set your Gmail credentials directly in the test script (**'ComposeEmailSteps.java'**).
-  * Locate the following lines in **ComposeEmailSteps.java**:
+  * Before running the tests, ensure you have set your Gmail credentials directly in the properties file (**`'GlobalData.properties'`**).
+  * Locate the following lines in **`src/test/java/resources/GlobalData.properties`**:
     ```
-    private String email = "your_email@gmail.com";
-    private String password = "your_password";
+    email = "your_email@gmail.com";
+    password = "your_password";
     ```
-    Replace **"your_email@gmail.com"** and **"your_password"** with your actual Gmail credentials.
+    Replace `your_email@gmail.com` and `your_password` with your actual Gmail credentials.
 
 ## Test Structure
 * **Feature File: `src/test/resources/features/compose_email.feature`**
