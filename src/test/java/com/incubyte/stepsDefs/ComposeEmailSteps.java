@@ -2,6 +2,7 @@ package com.incubyte.stepsDefs;
 
 import com.incubyte.pages.ComposeEmailPage;
 import com.incubyte.pages.LoginPage;
+import com.incubyte.utility.PropertyFileReader;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
@@ -13,26 +14,24 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.io.IOException;
 import java.time.Duration;
 
 public class ComposeEmailSteps {
 
     private WebDriver driver;
-    private WebDriverWait wait;
+    private PropertyFileReader fileReader;
 
     private LoginPage loginPage;
     private ComposeEmailPage composeEmail;
 
-    String baseURL = "https://mail.google.com/";
-    String email= "";
-    String password = "";
-
     @Before
-    public void setup(){
+    public void setup() throws IOException {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get(baseURL);
+        fileReader = new PropertyFileReader();
+        driver.get(fileReader.getProperty("baseURL"));
     }
 
     @After
@@ -48,10 +47,10 @@ public class ComposeEmailSteps {
     }
 
     @Given("the user is logged into Gmail account")
-    public void the_user_is_logged_into_gmail_account(){
-        loginPage.enterEmail(email);
+    public void the_user_is_logged_into_gmail_account() throws IOException {
+        loginPage.enterEmail(fileReader.getProperty("email"));
         loginPage.clickNextButtonAfterEnteringEmail();
-        loginPage.enterPassword(password);
+        loginPage.enterPassword(fileReader.getProperty("password"));
         loginPage.clickNextButtonAfterEnterPassword();
     }
 
